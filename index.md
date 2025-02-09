@@ -1,6 +1,3 @@
 ---
-layout: default
-title: "Home"
+layout: page
 ---
-# Hello World!
-Welcome to my GitHub Pages site.
