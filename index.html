@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vincent Chen | Personal Website</title>
+
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --accent: #2563eb;
+      --accent-light: #dbeafe;
+      --border: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav h1 {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+
+    section {
+      margin-bottom: 72px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .profile-photo {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      border: 4px solid white;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+      object-fit: cover;
+    }
+
+    .photo-placeholder {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #dbeafe, #eff6ff);
+      border: 4px solid white;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      text-align: center;
+      padding: 20px;
+      font-size: 15px;
+    }
+
+    .hero h2 {
+      font-size: 42px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .hero .subtitle {
+      font-size: 20px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      margin-bottom: 14px;
+      font-size: 17px;
+    }
+
+    .buttons {
+      margin-top: 24px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+      border: 1px solid var(--accent);
+    }
+
+    .button.secondary {
+      background: white;
+      color: var(--accent);
+      border: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-size: 30px;
+      margin-bottom: 20px;
+      border-bottom: 3px solid var(--accent);
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      margin-bottom: 18px;
+    }
+
+    .updates-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .update-date {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .update-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .research-card h3 {
+      font-size: 21px;
+      margin-bottom: 10px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 36px 24px;
+      border-top: 1px solid var(--border);
+      background: var(--card);
+    }
+
+    @media (max-width: 780px) {
+      .nav {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .photo-placeholder,
+      .profile-photo {
+        margin: 0 auto;
+      }
+
+      .hero h2 {
+        font-size: 34px;
+      }
+
+      .research-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .buttons {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="nav">
+      <h1>Vincent Chen</h1>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#updates">Updates</a>
+        <a href="#research">Research</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Home Section -->
+    <section id="home" class="hero">
+      <!-- Option 1: Use this placeholder before adding your photo -->
+      <div class="photo-placeholder">
+        Replace with your profile photo:<br />
+        assets/profile.jpg
+      </div>
+
+      <!-- Option 2: After adding your photo, replace the placeholder above with this line:
+      <img src="assets/profile.jpg" alt="Vincent Chen profile photo" class="profile-photo" />
+      -->
+
+      <div>
+        <h2>Hi, I’m Vincent Chen.</h2>
+        <p class="subtitle">
+          PhD Student in Statistics and Machine Learning at Dartmouth College
+        </p>
+
+        <p>
+          I am a PhD student at Dartmouth College, working at the intersection of
+          statistical machine learning, reinforcement learning, healthcare AI, and
+          large language model agents.
+        </p>
+
+        <p>
+          My research focuses on developing reliable and interpretable AI systems for
+          decision-making problems, with applications in healthcare, fairness-aware
+          reinforcement learning, and agentic AI workflows.
+        </p>
+
+        <p>
+          I have industry experience in applied machine learning and data science,
+          including internship work on LLM-powered feature extraction, recommendation
+          systems, and scalable AI pipelines.
+        </p>
+
+        <p>
+          Outside of research, I enjoy exploring new technologies, writing technical
+          articles, traveling, and working on personal machine learning projects.
+        </p>
+
+        <div class="buttons">
+          <a class="button" href="https://github.com/zequn" target="_blank">GitHub</a>
+          <a class="button secondary" href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+          <a class="button secondary" href="mailto:your-email@example.com">Email Me</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Updates Section -->
+    <section id="updates">
+      <h2 class="section-title">Updates</h2>
+
+      <div class="updates-list">
+        <div class="card">
+          <div class="update-date">May 2026</div>
+          <div class="update-title">Upcoming Applied Scientist Intern at Amazon</div>
+          <p>
+            I accepted an Applied Scientist Internship offer at Amazon, where I will work
+            on machine learning and LLM-related problems.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="update-date">2026</div>
+          <div class="update-title">Thesis Proposal Preparation</div>
+          <p>
+            I am preparing my thesis proposal on healthcare AI, reinforcement learning,
+            and reliable machine learning for decision-making.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="update-date">2025</div>
+          <div class="update-title">LLM Feature Engineering Project</div>
+          <p>
+            I developed an LLM-enhanced machine learning pipeline that uses large language
+            models to extract structured features from unstructured text and improve
+            tabular prediction performance.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="update-date">Add more news</div>
+          <div class="update-title">Paper Accepted / Award / New Project</div>
+          <p>
+            Add future updates here, such as accepted papers, conference presentations,
+            internships, awards, or new open-source projects.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research">
+      <h2 class="section-title">Research</h2>
+
+      <div class="research-grid">
+        <div class="card research-card">
+          <h3>Boosted Distributional Reinforcement Learning</h3>
+          <p>
+            This project studies distributional reinforcement learning methods for
+            improving stability, fairness, and robustness in sequential decision-making.
+            The work is motivated by healthcare applications where both expected outcomes
+            and outcome distributions matter.
+          </p>
+          <div class="tags">
+            <span class="tag">Reinforcement Learning</span>
+            <span class="tag">Healthcare AI</span>
+            <span class="tag">Fairness</span>
+          </div>
+          <p style="margin-top: 14px;">
+            <a href="https://github.com/zequn" target="_blank">View project on GitHub →</a>
+          </p>
+        </div>
+
+        <div class="card research-card">
+          <h3>Clinical Agent Skill Capsules</h3>
+          <p>
+            This project explores how domain-specific agent skills can make medical
+            LLM-agent workflows more bounded, auditable, and safe. The framework defines
+            workflow scope, patient-context requirements, evidence binding, safety gates,
+            and evaluation hooks.
+          </p>
+          <div class="tags">
+            <span class="tag">LLM Agents</span>
+            <span class="tag">Clinical AI</span>
+            <span class="tag">AI Safety</span>
+          </div>
+          <p style="margin-top: 14px;">
+            <a href="https://github.com/zequn" target="_blank">View project on GitHub →</a>
+          </p>
+        </div>
+
+        <div class="card research-card">
+          <h3>Fair Multi-Armed Bandits for LLM Systems</h3>
+          <p>
+            This project investigates fairness-aware multi-armed bandit algorithms for
+            LLM-powered decision systems. The goal is to balance reward optimization with
+            fairness constraints under adaptive user representations.
+          </p>
+          <div class="tags">
+            <span class="tag">Bandits</span>
+            <span class="tag">Fair ML</span>
+            <span class="tag">LLMs</span>
+          </div>
+          <p style="margin-top: 14px;">
+            <a href="https://github.com/zequn" target="_blank">View project on GitHub →</a>
+          </p>
+        </div>
+
+        <div class="card research-card">
+          <h3>LLMs as Feature Engineers for Tabular ML</h3>
+          <p>
+            This project studies how large language models can improve traditional
+            machine learning pipelines by extracting structured signals from unstructured
+            context. The extracted features are then used by models such as XGBoost for
+            tabular prediction tasks.
+          </p>
+          <div class="tags">
+            <span class="tag">Feature Engineering</span>
+            <span class="tag">XGBoost</span>
+            <span class="tag">LLMs</span>
+          </div>
+          <p style="margin-top: 14px;">
+            <a href="https://github.com/zequn" target="_blank">View project on GitHub →</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Vincent Chen. Built with GitHub Pages.</p>
+  </footer>
+</body>
+</html>
